@@ -1,0 +1,199 @@
+html { -webkit-text-size-adjust: 100%; }        /* stop iOS enlarging text in landscape */
+img, svg { display: block; max-width: 100%; }   /* images never overflow the column */
+input, button, textarea, select { font: inherit; } /* form controls use the page font */
+
+:root {
+  --font-heading: "Solway", Georgia, serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Candidate fonts, not yet applied */
+  --font-aleo: "Aleo", Georgia, serif;
+  --font-montserrat: "Montserrat", system-ui, sans-serif;
+  --font-roboto-slab: "Roboto Slab", Georgia, serif;
+  --font-arvo: "Arvo", Georgia, serif;
+  --font-zilla-slab: "Zilla Slab", Georgia, serif;
+
+  --color-bg: #fafaf8;
+  --color-text: #1a1a1a;
+  --color-muted: #5f5f5f;
+  --color-border: #e4e4e0;
+  --color-accent: #2f5bd3;
+
+  --max-width: 720px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #141414;
+    --color-text: #ededea;
+    --color-muted: #a3a3a0;
+    --color-border: #2c2c2a;
+    --color-accent: #8aa8ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Header text: Solway */
+h1,
+h2,
+h3,
+.wordmark {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 7vw, 3.5rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0 0 0.25rem;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.site-header,
+main,
+.site-footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.wordmark {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-header nav a {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  color: var(--color-text);
+}
+
+section {
+  padding: 3rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.hero {
+  border-top: none;
+  padding-top: 4rem;
+}
+
+.headline {
+  font-size: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.intro {
+  color: var(--color-muted);
+  margin: 0 0 2rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.button-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.cards,
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-footer {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
