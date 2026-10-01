@@ -34,9 +34,9 @@
   box-sizing: border-box;
 }
 
-html { -webkit-text-size-adjust: 100%; }  /* stop iOS enlarging text in landscape */
-img, svg { display: block; max-width: 100%; } /* images never overflow the column */
-input, button, textarea, select { font: inherit; }  /* form controls use the page font */
+html { -webkit-text-size-adjust: 100%; }        /* stop iOS enlarging text in landscape */
+img, svg { display: block; max-width: 100%; }   /* images never overflow the column */
+input, button, textarea, select { font: inherit; } /* form controls use the page font */
 
 body {
   margin: 0;
@@ -45,6 +45,26 @@ body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.aleo { 
+  font-family: var(--font-aleo);
+}
+
+.montserrat { 
+  font-family: var(--font-montserrat);
+}
+
+.roboto-slab { 
+  font-family: var(--font-roboto-slab);
+}
+
+.arvo { 
+  font-family: var(--font-arvo);
+}
+
+.zilla { 
+  font-family: var(--font-zilla-slab);
 }
 
 /* Header text: Solway */
