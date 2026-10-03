@@ -8,9 +8,10 @@
   --font-roboto-slab: "Roboto Slab", Georgia, serif;
   --font-arvo: "Arvo", Georgia, serif;
   --font-zilla-slab: "Zilla Slab", Georgia, serif;
+  --font-quicksand: "Quicksand", system-ui, sans-serif;
 
   --color-bg: #c6e4e6;
-  --color-text: #1a1a1a;
+  --color-text: #2b2a2e;
   --color-muted: #5f5f5f;
   --color-border: #e4e4e0;
   --color-accent: #2f5bd3;
@@ -38,37 +39,56 @@ html { -webkit-text-size-adjust: 100%; }        /* stop iOS enlarging text in la
 img, svg { display: block; max-width: 100%; }   /* images never overflow the column */
 input, button, textarea, select { font: inherit; } /* form controls use the page font */
 
+/* Smooth scrolling for in-page links, unless the visitor prefers reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Leave a gap above a section when you scroll to it */
+[id] {
+  scroll-margin-top: 1.5rem;
+}
+
 body {
   margin: 0;
-  background: var(--color-bg);
+  background-color: var(--color-bg);
+  background-image: url("assets/images/rainbow-vertical.png");
+  background-repeat: repeat-y;
+  background-position: top 143px left 11px;
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
 }
 
-.aleo { 
+.aleo {
   font-family: var(--font-aleo);
 }
 
-.montserrat { 
+.montserrat {
   font-family: var(--font-montserrat);
 }
 
-.roboto-slab { 
+.roboto-slab {
   font-family: var(--font-roboto-slab);
 }
 
-.arvo { 
+.arvo {
   font-family: var(--font-arvo);
 }
 
-.zilla { 
+.zilla {
   font-family: var(--font-zilla-slab);
 }
 
-.solway { 
+.solway {
   font-family: var(--font-heading);
+}
+
+.quicksand {
+  font-family: var(--font-quicksand);
 }
 
 /* Header text: Solway */
@@ -128,7 +148,7 @@ main,
 .site-header {
   background-image: url("assets/images/rainbow-horizontal.png");
   background-repeat: repeat-x;
-  background-position: top 20px left 0;
+  background-position: left 279px;
   min-height: 21px;
 }
 
