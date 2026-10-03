@@ -6,13 +6,16 @@
   --color-text: #2b2a2e;
   --color-accent: #0fa1c6;
   --color-accent-secondary: #0B82A0;
+  --color-accent-dark: #06667E;   /* ~4.9:1 on --color-bg, safe for text */
+  --color-accent-darker: #054E61; /* ~6.9:1 on --color-bg */
 
-  --color-link: var(--color-accent-secondary);
-  --color-link-hover: var(--color-accent);
-  --color-button: var(--color-accent);
-  --color-button-text: var(--color-bg);
-  --color-button-text-hover: #fff;
-  --color-button-shadow: var(--color-accent-secondary);
+  --color-link: var(--color-accent-dark);
+  --color-link-hover: var(--color-accent-darker);
+  --color-button: var(--color-accent-dark);
+  --color-button-text: var(--color-bg);  /* ~4.9:1 on --color-button */
+  --color-button-text-hover: #fff;       /* ~6.5:1 on --color-button */
+  --color-button-shadow: var(--color-accent-darker); /* shadow stays darker than the button */
+  --color-focus: var(--color-text);
 
   --max-width: 960px;
 }
@@ -58,17 +61,24 @@ a:hover {
   text-decoration: none;
 }
 
+/* Visible ring when tabbing with a keyboard; mouse clicks don't trigger it */
+a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
 .button {
   display: inline-block;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
-  color: var(--color-bg);
+  color: var(--color-button-text);
   background-color: var(--color-button);
   text-decoration: none;
   box-shadow: 5px 5px 0px 0px var(--color-button-shadow);
 }
 
-.button:hover {
+.button:hover,
+.button:focus-visible {
   color: var(--color-button-text-hover);
   box-shadow: 2px 2px 0px 0px var(--color-button-shadow);
   transform: translateY(3px);
@@ -93,7 +103,7 @@ a:hover {
     "links profile-image";
   grid-template-columns: 2fr 1fr;
   column-gap: 1.5rem;
-  padding: 3rem 0;
+  padding: 3rem 16px;
 }
 
 .profile-image {
