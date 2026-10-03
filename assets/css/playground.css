@@ -15,7 +15,7 @@
   --color-button-text: var(--color-bg);  /* ~4.9:1 on --color-button */
   --color-button-text-hover: #fff;       /* ~6.5:1 on --color-button */
   --color-button-shadow: var(--color-accent-darker); /* shadow stays darker than the button */
-  --color-focus: var(--color-text);
+  --color-focus: var(--color-accent-dark); /* for focus-visible outlines */
 
   --max-width: 960px;
 }
@@ -58,7 +58,6 @@ a {
 
 a:hover {
   color: var(--color-link-hover);
-  text-decoration: none;
 }
 
 /* Visible ring when tabbing with a keyboard; mouse clicks don't trigger it */
@@ -77,8 +76,7 @@ a:focus-visible {
   box-shadow: 5px 5px 0px 0px var(--color-button-shadow);
 }
 
-.button:hover,
-.button:focus-visible {
+.button:hover {
   color: var(--color-button-text-hover);
   box-shadow: 2px 2px 0px 0px var(--color-button-shadow);
   transform: translateY(3px);
@@ -109,6 +107,7 @@ a:focus-visible {
 .profile-image {
   grid-area: profile-image;
   align-self: center;
+  height: auto; /* keep proportions; the HTML width/height only reserve space while loading */
 }
 
 .heading {
@@ -135,7 +134,7 @@ a:focus-visible {
   grid-area: actions;
   display: flex;
   flex-wrap: wrap;
-  column-gap: 0.75rem;
+  gap: 0.75rem;
   justify-content: center;
 }
 
@@ -145,6 +144,7 @@ a:focus-visible {
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   column-gap: 1.25rem;
   justify-content: center;
 }
@@ -152,4 +152,35 @@ a:focus-visible {
 .link {
   display: flex;
   column-gap: 0.15rem;
+  text-decoration-thickness: 1px;
+}
+
+.link:hover {
+  text-decoration-style: wavy;
+}
+
+/* Phone layout: one column, image on top, heading scales with the screen */
+@media (max-width: 800px) {
+  .hero {
+    grid-template-areas:
+      "profile-image"
+      "heading"
+      "intro"
+      "actions"
+      "links";
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 2rem;
+  }
+
+  .profile-image {
+    justify-self: center;
+    width: min(200px, 55%);
+    margin-bottom: 1.5rem;
+  }
+
+  .heading {
+    font-size: clamp(3rem, 15vw, 6.81rem);
+    letter-spacing: -0.07em; /* same tightness as desktop, scaled to the font size */
+    line-height: 0.85;       /* a little looser so wrapped lines don't collide */
+  }
 }
