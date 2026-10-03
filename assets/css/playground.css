@@ -54,13 +54,58 @@ input, button, textarea, select { font: inherit; } /* form controls use the page
 body {
   margin: 0;
   background-color: var(--color-bg);
-  background-image: url("assets/images/rainbow-vertical.png");
-  background-repeat: repeat-y;
-  background-position: top 143px left 11px;
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
+}
+
+/* Hero: text on the left, image on the right, centered vertically in the window */
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* column matches the window, not the widest content */
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh; /* excludes mobile browser toolbars where supported */
+  padding: 2rem 16px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 960px;
+}
+
+.hero-text {
+  flex: 1 1 0;
+  min-width: 0; /* lets long words wrap instead of pushing the image off-screen */
+}
+
+.profile-image {
+  flex: 0 0 auto;
+  width: min(320px, 35%);
+  height: auto;
+}
+
+/* Narrow screens: stack with the image above the text */
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .hero-text {
+    flex: none;
+    width: 100%; /* fill the screen width instead of the longest line */
+  }
+
+  .profile-image {
+    order: -1;
+    width: min(200px, 60%);
+  }
 }
 
 .aleo {
@@ -116,7 +161,7 @@ h3 {
   font-size: 1.125rem;
   font-weight: 500;
   margin: 0 0 0.25rem;
-} */
+}
 
 a {
   color: var(--color-accent);
@@ -127,15 +172,15 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-/* .site-header,
+.site-header,
 main,
 .site-footer {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 16px;
-}*/
+}
 
-/* .site-header {
+.site-header {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -143,16 +188,9 @@ main,
   align-items: center;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-} */
-
-.site-header {
-  background-image: url("assets/images/rainbow-horizontal.png");
-  background-repeat: repeat-x;
-  background-position: left 279px;
-  min-height: 21px;
 }
 
-/* .wordmark {
+.wordmark {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-text);
