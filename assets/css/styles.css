@@ -15,7 +15,7 @@
   --color-button-text: var(--color-bg);  /* ~4.9:1 on --color-button */
   --color-button-text-hover: #fff;       /* ~6.5:1 on --color-button */
   --color-button-shadow: var(--color-accent-darker); /* shadow stays darker than the button */
-  --color-focus: var(--color-accent-dark); /* for focus-visible outlines */
+  --color-focus: #3478f6; /* for focus-visible outlines */
 
   --max-width: 960px;
 }
@@ -51,6 +51,9 @@ body {
 }
 
 a {
+  display: flex;
+  align-items: center;
+  column-gap: 0.15rem;
   color: var(--color-link);
   font-weight: 500;
   transition: all 0.2s ease-in-out;
@@ -67,13 +70,16 @@ a:focus-visible {
 }
 
 .button {
-  display: inline-block;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   color: var(--color-button-text);
   background-color: var(--color-button);
   text-decoration: none;
   box-shadow: 5px 5px 0px 0px var(--color-button-shadow);
+}
+
+.button:focus-visible {
+  outline-offset: 0;
 }
 
 .button:hover {
@@ -127,12 +133,16 @@ main {
   font-size: 1.125rem;
 }
 
-.actions {
-  grid-area: actions;
+.actions,
+.links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
   justify-content: center;
+}
+
+.actions {
+  grid-area: actions;
+  gap: 0.75rem;
   margin: 0 0 1rem;
 }
 
@@ -141,20 +151,21 @@ main {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
   column-gap: 1.25rem;
-  justify-content: center;
 }
 
 .link {
-  display: flex;
-  column-gap: 0.15rem;
   text-decoration-thickness: 1px;
 }
 
 .link:hover {
   text-decoration-style: wavy;
+}
+
+@media (max-width: 959px) {
+  .heading {
+    font-size: 5.625rem;
+  }
 }
 
 /* Phone layout: one column, image on top, heading scales with the screen */
@@ -177,7 +188,6 @@ main {
   }
 
   .heading {
-    font-size: clamp(3rem, 15vw, 6.81rem);
     letter-spacing: -0.07em; /* same tightness as desktop, scaled to the font size */
     line-height: 0.85;       /* a little looser so wrapped lines don't collide */
   }
