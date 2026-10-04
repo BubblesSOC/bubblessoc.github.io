@@ -237,6 +237,14 @@ main {
   }
 }
 
+@media (max-width: 840px) {
+  /* Adjust the speech bubble so it doesn't cover her crown */
+  .speech-bubble {
+    top: -6%;
+    left: -10%;
+  }
+}
+
 /* Phone layout: one column, image on top, heading scales with the screen */
 @media (max-width: 800px) {
   .hero {
