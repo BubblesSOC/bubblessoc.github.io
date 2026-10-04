@@ -195,3 +195,9 @@ main {
     line-height: 0.85;       /* a little looser so wrapped lines don't collide */
   }
 }
+
+@media (max-width: 459px) {
+  .links {
+    column-gap: 0.75rem;
+  }
+}
