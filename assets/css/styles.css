@@ -124,10 +124,76 @@ main {
   margin: 0 0 1.5rem;
 }
 
-.profile-image {
+/* Wrapper so the speech bubble can sit on top of the image */
+.profile-image-wrap {
   grid-area: profile-image;
   align-self: center;
+  position: relative;
+}
+
+.profile-image {
+  width: 100%;
   height: auto; /* keep proportions; the HTML width/height only reserve space while loading */
+}
+
+/* "Hello World!" bubble that pops up when the image is hovered */
+.speech-bubble {
+  position: absolute;
+  top: -4%;
+  left: -6%;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--color-text); /* matches the art's outline */
+  border-radius: 1.25rem;
+  background: #fff;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  white-space: nowrap;
+  pointer-events: none; /* never blocks hovering the image */
+  opacity: 0;
+  transform: scale(0.6) translateY(0.5rem);
+  transform-origin: bottom right; /* grows out from the tail */
+  transition:
+    opacity 0.2s ease-out,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* slight overshoot for a "pop" */
+}
+
+/* Tail pointing down toward her face: an outlined triangle with a white one on top */
+.speech-bubble::before,
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  right: 1.25rem;
+  border-style: solid;
+  border-color: transparent;
+}
+
+/* Equal left/right borders make a symmetrical triangle pointing straight down */
+.speech-bubble::before {
+  top: 100%;
+  border-width: 14px 9px 0;
+  border-top-color: var(--color-text);
+}
+
+/* Smaller white triangle, centered over the dark one, so only an outline shows */
+.speech-bubble::after {
+  top: calc(100% - 2px);
+  right: calc(1.25rem + 2px);
+  border-width: 11px 7px 0;
+  border-top-color: #fff;
+}
+
+.profile-image-wrap:hover .speech-bubble {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Fade only, no pop, for visitors who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .speech-bubble,
+  .profile-image-wrap:hover .speech-bubble {
+    transform: none;
+  }
 }
 
 .intro {
@@ -184,10 +250,24 @@ main {
     padding-block: 2rem;
   }
 
-  .profile-image {
+  .profile-image-wrap {
     justify-self: center;
     width: min(200px, 55%);
     margin-bottom: 1.5rem;
+  }
+
+  /* Smaller bubble, nudged left so it doesn't cover her crown */
+  .speech-bubble {
+    top: 0;
+    left: -30%;
+    font-size: 1rem;
+    border-width: 2px; /* thinner outline to suit the smaller bubble */
+  }
+
+  /* Bigger white triangle so the tail's outline matches the 2px border */
+  .speech-bubble::after {
+    right: calc(1.25rem + 1px);
+    border-width: 12px 8px 0;
   }
 
   .heading {
