@@ -81,14 +81,14 @@ a:focus-visible {
   box-shadow: 5px 5px 0px 0px var(--color-button-shadow);
 }
 
-.button:focus-visible {
-  outline-offset: 1px;
-}
-
 .button:hover {
   color: var(--color-button-text-hover);
   box-shadow: 2px 2px 0px 0px var(--color-button-shadow);
   transform: translateY(3px);
+}
+
+.button:focus-visible {
+  outline-offset: 1px;
 }
 
 main {
@@ -113,12 +113,6 @@ main {
   padding: 3rem 16px;
 }
 
-.profile-image {
-  grid-area: profile-image;
-  align-self: center;
-  height: auto; /* keep proportions; the HTML width/height only reserve space while loading */
-}
-
 .heading {
   grid-area: heading;
   font-family: var(--font-heading);
@@ -128,6 +122,12 @@ main {
   line-height: 0.76;
   text-align: center;
   margin: 0 0 1.5rem;
+}
+
+.profile-image {
+  grid-area: profile-image;
+  align-self: center;
+  height: auto; /* keep proportions; the HTML width/height only reserve space while loading */
 }
 
 .intro {
